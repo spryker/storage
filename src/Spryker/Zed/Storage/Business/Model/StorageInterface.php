@@ -5,13 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Storage\Business;
+namespace Spryker\Zed\Storage\Business\Model;
 
-interface StorageFacadeInterface
+interface StorageInterface
 {
     /**
-     * @api
-     *
      * @param string $key
      *
      * @return mixed
@@ -19,56 +17,24 @@ interface StorageFacadeInterface
     public function get($key);
 
     /**
-     * @api
-     *
      * @return int
      */
     public function getTotalCount();
 
     /**
-     * @api
-     *
      * @return array
      */
     public function getTimestamps();
 
     /**
-     * @api
-     *
      * @return int
      */
     public function deleteAll();
 
     /**
-     * @api
-     *
      * @param array $keys
      *
      * @return void
      */
     public function deleteMulti(array $keys);
-
-    /**
-     * Specification:
-     * - Exports the redis db to destination.
-     *
-     * @api
-     *
-     * @param string $destination
-     *
-     * @return bool
-     */
-    public function export($destination);
-
-    /**
-     * Specification:
-     * - Imports redis db dump from source.
-     *
-     * @api
-     *
-     * @param string $source
-     *
-     * @return bool
-     */
-    public function import($source);
 }
