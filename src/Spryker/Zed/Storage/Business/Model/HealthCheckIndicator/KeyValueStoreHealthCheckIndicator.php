@@ -5,13 +5,13 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\Storage\HealthIndicator;
+namespace Spryker\Zed\Storage\Business\Model\HealthCheckIndicator;
 
 use Exception;
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 use Spryker\Client\Storage\StorageClientInterface;
 
-class HealthIndicator implements HealthIndicatorInterface
+class KeyValueStoreHealthCheckIndicator implements HealthCheckIndicatorInterface
 {
     public const KEY_HEALTH_CHECK = 'healthCheck';
 

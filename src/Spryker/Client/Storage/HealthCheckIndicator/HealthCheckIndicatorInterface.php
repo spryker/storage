@@ -5,14 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\Storage;
+namespace Spryker\Client\Storage\HealthCheckIndicator;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 
-interface StorageServiceInterface
+interface HealthCheckIndicatorInterface
 {
     /**
      * @return \Generated\Shared\Transfer\HealthCheckServiceResponseTransfer
      */
-    public function checkStorageHealthIndicator(): HealthCheckServiceResponseTransfer;
+    public function executeHealthCheck(): HealthCheckServiceResponseTransfer;
 }
