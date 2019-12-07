@@ -5,20 +5,18 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\Storage\Communication\Plugin\HealthCheck;
+namespace Spryker\Yves\Storage\Plugin\HealthCheck;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
 use Spryker\Shared\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface;
-use Spryker\Zed\Kernel\Communication\AbstractPlugin;
+use Spryker\Yves\Kernel\AbstractPlugin;
 
 /**
- * @method \Spryker\Zed\Storage\Communication\StorageCommunicationFactory getFactory()()
- * @method \Spryker\Zed\Storage\StorageConfig getConfig()
- * @method \Spryker\Zed\Storage\Business\StorageFacadeInterface getFacade()
+ * @method \Spryker\Yves\Storage\StorageFactory getFactory()
  */
 class KeyValueStoreHealthCheckPlugin extends AbstractPlugin implements HealthCheckPluginInterface
 {
-    public const STORAGE_HEALTH_CHECK_SERVICE_NAME = 'storage';
+    protected const STORAGE_HEALTH_CHECK_SERVICE_NAME = 'storage';
 
     /**
      * {@inheritDoc}
@@ -41,6 +39,6 @@ class KeyValueStoreHealthCheckPlugin extends AbstractPlugin implements HealthChe
      */
     public function check(): HealthCheckServiceResponseTransfer
     {
-        return $this->getFacade()->executeKeyValueStoreHealthCheck();
+        return $this->getFactory()->createKeyValueStoreHealthChecker()->executeHealthCheck();
     }
 }

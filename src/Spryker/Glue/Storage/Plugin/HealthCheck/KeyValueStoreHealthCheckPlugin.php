@@ -5,18 +5,19 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Storage\Plugin\HealthCheck;
+namespace Spryker\Glue\Storage\Plugin\HealthCheck;
 
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
-use Spryker\Client\Kernel\AbstractPlugin;
+use Spryker\Glue\Kernel\AbstractPlugin;
 use Spryker\Shared\HealthCheckExtension\Dependency\Plugin\HealthCheckPluginInterface;
-use Spryker\Shared\Storage\StorageConfig;
 
 /**
- * @method \Spryker\Client\Storage\StorageFactory getFactory()
+ * @method \Spryker\Yves\Storage\StorageFactory getFactory()
  */
 class KeyValueStoreHealthCheckPlugin extends AbstractPlugin implements HealthCheckPluginInterface
 {
+    protected const STORAGE_HEALTH_CHECK_SERVICE_NAME = 'storage';
+
     /**
      * {@inheritDoc}
      *
@@ -26,7 +27,7 @@ class KeyValueStoreHealthCheckPlugin extends AbstractPlugin implements HealthChe
      */
     public function getName(): string
     {
-        return StorageConfig::STORAGE_SERVICE_NAME;
+        return static::STORAGE_HEALTH_CHECK_SERVICE_NAME;
     }
 
     /**

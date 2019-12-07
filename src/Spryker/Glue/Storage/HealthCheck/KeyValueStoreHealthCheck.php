@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Client\Storage\HealthCheck;
+namespace Spryker\Glue\Storage\HealthCheck;
 
 use Exception;
 use Generated\Shared\Transfer\HealthCheckServiceResponseTransfer;
@@ -13,7 +13,7 @@ use Spryker\Client\Storage\StorageClientInterface;
 
 class KeyValueStoreHealthCheck implements HealthCheckInterface
 {
-    public const KEY_HEALTH_CHECK = 'healthCheck';
+    public const KEY_STORAGE_HEALTH_CHECK = 'STORAGE_GLUE_HEALTH_CHECK';
 
     /**
      * @var \Spryker\Client\Storage\StorageClientInterface $storageClient
@@ -37,8 +37,8 @@ class KeyValueStoreHealthCheck implements HealthCheckInterface
             ->setStatus(true);
 
         try {
-            $this->storageClient->set(static::KEY_HEALTH_CHECK, 'ok');
-            $this->storageClient->get(static::KEY_HEALTH_CHECK);
+            $this->storageClient->set(static::KEY_STORAGE_HEALTH_CHECK, 'ok');
+            $this->storageClient->get(static::KEY_STORAGE_HEALTH_CHECK);
         } catch (Exception $e) {
             return $healthCheckServiceResponseTransfer
                 ->setStatus(false)
