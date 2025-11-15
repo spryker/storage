@@ -8,14 +8,10 @@
 {% block content %}
     {% embed '@Gui/Partials/widget.twig' %}
         {% block widget_content %}
-            <div class="row">
-                <div class="col-md-12">
-                    <dl class="row">
-                        <dt class="col-xs-3">{{ "Number of entries:" | trans }}</dt>
-                        <dd class="col-xs-9"><a href="/storage/maintenance/list">{{ totalCount }}</a></dd>
-                    </dl>
-                </div>
-            </div>
+            <dl class="row">
+                <dt class="col-3">{{ "Number of entries:" | trans }}</dt>
+                <dd class="col-9"><a href="/storage/maintenance/list">{{ totalCount }}</a></dd>
+            </dl>
         {% endblock %}
     {% endembed %}
 {% endblock %}
