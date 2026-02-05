@@ -431,7 +431,7 @@ class ServiceTest extends Unit
         };
 
         $redisService = $this->getMockBuilder(Service::class)
-            ->disableOriginalConstructor()
+            ->setConstructorArgs([$this->clientMock])
             ->onlyMethods(['getMulti'])
             ->getMock();
         $redisService
