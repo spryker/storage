@@ -6,3 +6,9 @@ parameters:
         - { message: '#If condition is always true.#', path: '%rootDir%/../../../src/Spryker/Storage/src/Spryker/Client/Storage/Cache/StorageCacheIncrementalStrategy.php' }
         -
             identifier: missingType.iterableValue
+        -
+            identifier: function.alreadyNarrowedType
+        -
+            identifier: trait.unused
+        -
+            identifier: class.notFound
