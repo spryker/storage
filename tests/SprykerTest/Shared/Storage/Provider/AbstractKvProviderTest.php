@@ -38,9 +38,13 @@ class AbstractKvProviderTest extends Unit
      */
     protected function getAbstractKvProviderMock(): AbstractKvProvider
     {
+        // `getConnectionParameters` is protected, mock it via getMockBuilder and onlyMethods so PHPUnit
+        // can override the protected method on the generated test double
         $abstractKvProviderMock = $this->getMockBuilder(AbstractKvProvider::class)
             ->onlyMethods(['getConnectionParameters'])
-            ->getMockForAbstractClass();
+            ->disableOriginalConstructor()
+            ->getMock();
+
         $abstractKvProviderMock->method('getConnectionParameters')
             ->willReturn([]);
 

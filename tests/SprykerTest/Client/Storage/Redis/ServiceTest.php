@@ -8,12 +8,12 @@
 namespace SprykerTest\Client\Storage\Redis;
 
 use Codeception\Test\Unit;
-use Predis\ClientInterface;
 use Spryker\Client\Storage\Redis\Service;
 use Spryker\Client\Storage\StorageClient;
 use Spryker\Client\Storage\StorageClientInterface;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Storage\StorageConstants;
+use SprykerTest\Client\Storage\PredisClientPrototype;
 use SprykerTest\Client\Testify\Helper\ClientHelperTrait;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -138,23 +138,8 @@ class ServiceTest extends Unit
      */
     protected function _before(): void
     {
-        $this->clientMock = $this->getMockBuilder(ClientInterface::class)
-            ->addMethods([
-                'keys',
-                'scan',
-                'dbSize',
-            ])
-            ->onlyMethods([
-                method_exists(ClientInterface::class, 'getCommandFactory') ? 'getCommandFactory' : 'getProfile',
-                'getOptions',
-                'connect',
-                'disconnect',
-                'createCommand',
-                'executeCommand',
-                'getConnection',
-                '__call',
-            ])
-            ->getMock();
+        // Create a full mock of the prototype so dynamic Redis commands (declared on the prototype) can be configured
+        $this->clientMock = $this->createMock(PredisClientPrototype::class);
 
         $this->redisService = new Service(
             $this->clientMock,
