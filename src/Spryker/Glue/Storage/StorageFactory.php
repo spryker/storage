@@ -16,9 +16,6 @@ use Spryker\Glue\Storage\HealthCheck\KeyValueStoreHealthCheck;
  */
 class StorageFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Glue\Storage\HealthCheck\HealthCheckInterface
-     */
     public function createKeyValueStoreHealthChecker(): HealthCheckInterface
     {
         return new KeyValueStoreHealthCheck(

@@ -62,9 +62,6 @@ class CacheKeyGeneratorTest extends Unit
      */
     protected $storageConfigMock;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -98,9 +95,6 @@ class CacheKeyGeneratorTest extends Unit
         $this->assertSame($expectedResult, !$cacheKey);
     }
 
-    /**
-     * @return array
-     */
     public function generatesEmptyKeyWhenServerNameOrUriAreEmptyProvider(): array
     {
         return [
@@ -148,9 +142,6 @@ class CacheKeyGeneratorTest extends Unit
         $this->assertSame($expectedCacheKey, $actualCacheKey);
     }
 
-    /**
-     * @return array
-     */
     public function generatesCacheKeyProvider(): array
     {
         return [
@@ -198,19 +189,11 @@ class CacheKeyGeneratorTest extends Unit
         ];
     }
 
-    /**
-     * @param string $expectedRequestUriFragment
-     *
-     * @return string
-     */
     protected function buildExpectedCacheKeyTemplate(string $expectedRequestUriFragment): string
     {
         return implode(static::KEY_NAME_SEPARATOR, [$this->buildCacheKeyPrefixTemplate(), $expectedRequestUriFragment]);
     }
 
-    /**
-     * @return string
-     */
     protected function buildCacheKeyPrefixTemplate(): string
     {
         return implode(static::KEY_NAME_SEPARATOR, [
@@ -220,17 +203,11 @@ class CacheKeyGeneratorTest extends Unit
         ]);
     }
 
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
     protected function getStore(): Store
     {
         return Store::getInstance();
     }
 
-    /**
-     * @return \Spryker\Client\Storage\StorageFactory
-     */
     protected function createStorageFactory(): StorageFactory
     {
         $storageFactory = new StorageFactory();
@@ -239,9 +216,6 @@ class CacheKeyGeneratorTest extends Unit
         return $storageFactory;
     }
 
-    /**
-     * @return void
-     */
     protected function setUpStorageConfigMock(): void
     {
         $this->storageConfigMock = $this->createMock(StorageConfig::class);
@@ -250,9 +224,6 @@ class CacheKeyGeneratorTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     protected function setUpCacheKeyGenerator(): void
     {
         $this->cacheKeyGenerator = $this->createStorageFactory()->createCacheKeyGenerator();

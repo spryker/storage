@@ -58,11 +58,6 @@ class StorageHelper extends AbstractHelper
         $this->initializeClient();
     }
 
-    /**
-     * @param \Codeception\TestInterface $test
-     *
-     * @return void
-     */
     public function _after(TestInterface $test): void
     {
         $this->resetStaticCaches();
@@ -77,11 +72,6 @@ class StorageHelper extends AbstractHelper
         $this->cleanupStaticCache(StorageFactory::class, 'storageService', null);
     }
 
-    /**
-     * @param string $key
-     *
-     * @return void
-     */
     public function assertStorageHasKey(string $key): void
     {
         $allKeys = $this->getInMemoryStoragePlugin()->getAllKeys();
@@ -92,11 +82,6 @@ class StorageHelper extends AbstractHelper
         )));
     }
 
-    /**
-     * @param string $key
-     *
-     * @return void
-     */
     public function assertStorageNotHasKey(string $key): void
     {
         $allKeys = $this->getInMemoryStoragePlugin()->getAllKeys();
@@ -118,29 +103,16 @@ class StorageHelper extends AbstractHelper
         $inMemoryStorage->deleteAll();
     }
 
-    /**
-     * @return \Spryker\Client\Storage\StorageClientInterface
-     */
     public function getStorageClient(): StorageClientInterface
     {
         return $this->storageClient;
     }
 
-    /**
-     * @param string $key
-     * @param string $value
-     * @param int|null $ttl
-     *
-     * @return void
-     */
     public function mockStorageData(string $key, string $value, ?int $ttl = null): void
     {
         $this->getInMemoryStoragePlugin()->set($key, $value, $ttl);
     }
 
-    /**
-     * @return \SprykerTest\Client\Storage\Helper\InMemoryStoragePluginInterface
-     */
     public function getInMemoryStoragePlugin(): InMemoryStoragePluginInterface
     {
         if ($this->inMemoryStoragePlugin === null) {

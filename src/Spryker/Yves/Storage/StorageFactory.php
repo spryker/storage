@@ -16,9 +16,6 @@ use Spryker\Yves\Storage\HealthCheck\KeyValueStoreHealthCheck;
  */
 class StorageFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Yves\Storage\HealthCheck\HealthCheckInterface
-     */
     public function createKeyValueStoreHealthChecker(): HealthCheckInterface
     {
         return new KeyValueStoreHealthCheck(

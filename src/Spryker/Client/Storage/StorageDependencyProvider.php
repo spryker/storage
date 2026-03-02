@@ -38,11 +38,6 @@ class StorageDependencyProvider extends AbstractDependencyProvider
      */
     public const PLUGIN_STORAGE = 'PLUGIN_STORAGE';
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     public function provideServiceLayerDependencies(Container $container): Container
     {
         $container = parent::provideServiceLayerDependencies($container);
@@ -64,11 +59,6 @@ class StorageDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
     protected function addStoragePlugin(Container $container): Container
     {
         $container->set(static::PLUGIN_STORAGE, function (Container $container) {
@@ -78,9 +68,6 @@ class StorageDependencyProvider extends AbstractDependencyProvider
         return $container;
     }
 
-    /**
-     * @return \Spryker\Client\StorageExtension\Dependency\Plugin\StoragePluginInterface|null
-     */
     protected function getStoragePlugin(): ?StoragePluginInterface
     {
         return null;

@@ -31,17 +31,11 @@ class StorageCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Client\Storage\StorageClientInterface
-     */
     public function getStorageClient(): StorageClientInterface
     {
         return $this->getProvidedDependency(StorageDependencyProvider::CLIENT_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Zed\Storage\Dependency\Service\StorageToUtilSanitizeServiceInterface
-     */
     public function getUtilSanitizeService(): StorageToUtilSanitizeServiceInterface
     {
         return $this->getProvidedDependency(StorageDependencyProvider::SERVICE_UTIL_SANITIZE);

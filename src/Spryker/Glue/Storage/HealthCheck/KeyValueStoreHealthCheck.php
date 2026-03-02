@@ -23,17 +23,11 @@ class KeyValueStoreHealthCheck implements HealthCheckInterface
      */
     protected $storageClient;
 
-    /**
-     * @param \Spryker\Client\Storage\StorageClientInterface $storageClient
-     */
     public function __construct(StorageClientInterface $storageClient)
     {
         $this->storageClient = $storageClient;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\HealthCheckServiceResponseTransfer
-     */
     public function executeHealthCheck(): HealthCheckServiceResponseTransfer
     {
         $healthCheckServiceResponseTransfer = (new HealthCheckServiceResponseTransfer())

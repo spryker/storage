@@ -24,10 +24,6 @@ class StorageCacheStrategyFactory
      */
     protected $storageClientConfig;
 
-    /**
-     * @param \Spryker\Client\Storage\StorageClientInterface $storageClient
-     * @param \Spryker\Client\Storage\StorageConfig $storageConfig
-     */
     public function __construct(
         StorageClientInterface $storageClient,
         StorageConfig $storageConfig

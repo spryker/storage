@@ -19,13 +19,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
      */
     protected static $storage = [];
 
-    /**
-     * @param string $key
-     * @param string $value
-     * @param int|null $ttl
-     *
-     * @return void
-     */
     public function set(string $key, string $value, ?int $ttl = null): void
     {
         static::$storage[$key] = [
@@ -34,11 +27,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         ];
     }
 
-    /**
-     * @param array $items
-     *
-     * @return void
-     */
     public function setMulti(array $items): void
     {
         codecept_debug($this->format(sprintf(
@@ -56,11 +44,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         }
     }
 
-    /**
-     * @param string $key
-     *
-     * @return int
-     */
     public function delete(string $key): int
     {
         unset(static::$storage[$key]);
@@ -68,11 +51,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return 1;
     }
 
-    /**
-     * @param array $keys
-     *
-     * @return int
-     */
     public function deleteMulti(array $keys): int
     {
         codecept_debug($this->format(sprintf(
@@ -89,9 +67,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return count($keys);
     }
 
-    /**
-     * @return int
-     */
     public function deleteAll(): int
     {
         static::$storage = [];
@@ -117,11 +92,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return $result;
     }
 
-    /**
-     * @param array $keys
-     *
-     * @return array
-     */
     public function getMulti(array $keys): array
     {
         $multi = [];
@@ -133,9 +103,6 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return $multi;
     }
 
-    /**
-     * @return array
-     */
     public function getStats(): array
     {
         codecept_debug('Not implemented yet.');
@@ -143,19 +110,11 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return [];
     }
 
-    /**
-     * @return array
-     */
     public function getAllKeys(): array
     {
         return array_keys(static::$storage);
     }
 
-    /**
-     * @param string $pattern
-     *
-     * @return array
-     */
     public function getKeys(string $pattern): array
     {
         codecept_debug('Not implemented yet.');
@@ -163,17 +122,11 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return [];
     }
 
-    /**
-     * @return void
-     */
     public function resetAccessStats(): void
     {
         codecept_debug('Not implemented yet.');
     }
 
-    /**
-     * @return array
-     */
     public function getAccessStats(): array
     {
         codecept_debug('Not implemented yet.');
@@ -181,19 +134,11 @@ class InMemoryStoragePlugin implements InMemoryStoragePluginInterface
         return [];
     }
 
-    /**
-     * @return int
-     */
     public function getCountItems(): int
     {
         return count(static::$storage);
     }
 
-    /**
-     * @param bool $debug
-     *
-     * @return void
-     */
     public function setDebug(bool $debug): void
     {
         codecept_debug('Not implemented yet.');

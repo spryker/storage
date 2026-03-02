@@ -35,9 +35,6 @@ class StorageClientTest extends Unit
      */
     protected $storageClientMock;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -45,9 +42,6 @@ class StorageClientTest extends Unit
         $this->setupStorageClientMock();
     }
 
-    /**
-     * @return void
-     */
     public function tearDown(): void
     {
         parent::tearDown();
@@ -55,13 +49,6 @@ class StorageClientTest extends Unit
         $storageClient::$service = null;
     }
 
-    /**
-     * @param string $uri
-     * @param string $expectedCacheKey
-     * @param array $getParameters
-     *
-     * @return void
-     */
     protected function testStorageCacheAllowedGetParameters(
         string $uri,
         string $expectedCacheKey,
@@ -85,18 +72,12 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return string
-     */
     protected function getStoreAndLocale(): string
     {
         return strtolower($this->tester->getLocator()->store()->client()->getCurrentStore()->getNameOrFail()) . '.' .
             strtolower($this->tester->getLocator()->locale()->client()->getCurrentLocale()) . '.';
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateCacheKeyWithNoGetParameter(): void
     {
         $this->markTestSkipped(
@@ -109,9 +90,6 @@ class StorageClientTest extends Unit
         $this->testStorageCacheAllowedGetParameters($uri, $expectedCacheKey);
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateCacheKeyWithOneAllowedGetParameterAndOneIsGiven(): void
     {
         $this->markTestSkipped(
@@ -129,9 +107,6 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateCacheKeyWithTwoAllowedGetParameterAndOneIsGiven(): void
     {
         $this->markTestSkipped(
@@ -149,9 +124,6 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateCacheKeyWithOneAllowedGetParameterAndTwoAreGiven(): void
     {
         $this->markTestSkipped(
@@ -169,9 +141,6 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateCacheKeyWithTwoAllowedGetParameterAndTwoOrderedAreGiven(): void
     {
         $this->markTestSkipped(
@@ -189,9 +158,6 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGenerateCacheKeyWithTwoAllowedGetParameterAndTwoNotOrderedAreGiven(): void
     {
         $this->markTestSkipped(
@@ -209,9 +175,6 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testInvalidStorageScanPluginInterfaceExceptionThrown(): void
     {
         $this->expectException('Spryker\Client\Storage\Exception\InvalidStorageScanPluginInterfaceException');
@@ -224,9 +187,6 @@ class StorageClientTest extends Unit
         $storageClient->scanKeys('*', 100);
     }
 
-    /**
-     * @return void
-     */
     public function testCacheIsDisabled(): void
     {
         $this->tester->mockConfigMethod('isStorageCachingEnabled', false);
@@ -240,9 +200,6 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCacheIsEnabled(): void
     {
         $this->tester->mockConfigMethod('isStorageCachingEnabled', true);
@@ -260,17 +217,11 @@ class StorageClientTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Client\Storage\StorageClient
-     */
     protected function createStorageClient(): StorageClient
     {
         return new StorageClient();
     }
 
-    /**
-     * @return void
-     */
     protected function setupStorageClientMock(): void
     {
         $this->storageClientMock = $this->getMockBuilder(StorageClient::class)

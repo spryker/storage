@@ -49,11 +49,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
      */
     protected static $locale;
 
-    /**
-     * @param \Spryker\Client\Storage\Dependency\Client\StorageToStoreClientInterface $storeClient
-     * @param \Spryker\Client\Storage\Dependency\Client\StorageToLocaleClientInterface $localeClient
-     * @param \Spryker\Client\Storage\StorageConfig $config
-     */
     public function __construct(
         StorageToStoreClientInterface $storeClient,
         StorageToLocaleClientInterface $localeClient,
@@ -64,11 +59,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
         $this->config = $config;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request|null $request
-     *
-     * @return string
-     */
     public function generateCacheKey(?Request $request = null): string
     {
         if (!$this->config->isStorageCachingEnabled() || !$this->storeClient->isCurrentStoreDefined()) {
@@ -78,11 +68,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
         return $this->generateCacheKeyFromRequest($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request|null $request
-     *
-     * @return string
-     */
     protected function generateCacheKeyFromRequest(?Request $request = null): string
     {
         $request = $this->prepareRequest($request);
@@ -102,11 +87,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
         return $cacheKey;
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request|null $request
-     *
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     protected function prepareRequest(?Request $request = null): Request
     {
         return $request ?? Request::createFromGlobals();
@@ -136,12 +116,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
         return sprintf('?%s', http_build_query($allowedQueryStringParameters));
     }
 
-    /**
-     * @param string $urlSegments
-     * @param string $queryStringParametersKey
-     *
-     * @return string
-     */
     protected function buildCacheKey(string $urlSegments, string $queryStringParametersKey): string
     {
         $storeName = $this->getStoreName();
@@ -155,9 +129,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
         ]);
     }
 
-    /**
-     * @return string
-     */
     protected function getStoreName(): string
     {
         if (static::$storeName === null) {
@@ -167,9 +138,6 @@ class CacheKeyGenerator implements CacheKeyGeneratorInterface
         return static::$storeName;
     }
 
-    /**
-     * @return string
-     */
     protected function getLocale(): string
     {
         if (static::$locale === null) {

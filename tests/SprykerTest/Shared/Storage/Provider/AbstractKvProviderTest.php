@@ -22,9 +22,6 @@ use Spryker\Shared\Storage\Provider\AbstractKvProvider;
  */
 class AbstractKvProviderTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testGetConfigByKvNameShouldReturnArray(): void
     {
         $abstractKvProviderMock = $this->getAbstractKvProviderMock();

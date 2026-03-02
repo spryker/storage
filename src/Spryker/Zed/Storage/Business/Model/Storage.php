@@ -16,9 +16,6 @@ class Storage implements StorageInterface
      */
     protected $storageClient;
 
-    /**
-     * @param \Spryker\Client\Storage\StorageClientInterface $storageClient
-     */
     public function __construct(StorageClientInterface $storageClient)
     {
         $this->storageClient = $storageClient;

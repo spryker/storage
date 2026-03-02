@@ -33,17 +33,11 @@ class StorageHelperTest extends Unit
      */
     protected const STORAGE_VALUE = 'value';
 
-    /**
-     * @return void
-     */
     public function testGetClientReturnsTheMockedStorageClient(): void
     {
         $this->assertInstanceOf(StorageClientInterface::class, $this->getStorageHelper()->getStorageClient());
     }
 
-    /**
-     * @return void
-     */
     public function testGetTheStorageClientWithTheLocatorReturnsTheMockedStorageClient(): void
     {
         // Arrange - Add some data to the in-memory storage
@@ -57,18 +51,12 @@ class StorageHelperTest extends Unit
         $this->assertSame(static::STORAGE_VALUE, $client->get($storageKey));
     }
 
-    /**
-     * @return void
-     */
     public function testAssertStorageHasKeyThrowsExceptionWhenStorageDoesNotContainKey(): void
     {
         $this->expectException(ExpectationFailedException::class);
         $this->getStorageHelper()->assertStorageHasKey('not existing key');
     }
 
-    /**
-     * @return void
-     */
     public function testAssertStorageHasKeyWithKeyInStorage(): void
     {
         $storageKey = $this->getStorageKey();
@@ -77,9 +65,6 @@ class StorageHelperTest extends Unit
         $this->getStorageHelper()->assertStorageHasKey($storageKey);
     }
 
-    /**
-     * @return string
-     */
     protected function getStorageKey(): string
     {
         return Uuid::uuid4()->toString();

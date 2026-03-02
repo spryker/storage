@@ -54,11 +54,6 @@ class StorageTable extends AbstractTable
      */
     protected $utilSanitizeService;
 
-    /**
-     * @param \Spryker\Client\Storage\StorageClientInterface $storageClient
-     * @param \Spryker\Zed\Storage\Dependency\Service\StorageToUtilSanitizeServiceInterface $utilSanitizeService
-     * @param int|null $defaultPageLength
-     */
     public function __construct(
         StorageClientInterface $storageClient,
         StorageToUtilSanitizeServiceInterface $utilSanitizeService,
@@ -130,9 +125,6 @@ class StorageTable extends AbstractTable
         return $result;
     }
 
-    /**
-     * @return string
-     */
     public function getSearchTerm(): string
     {
         if (parent::getSearchTerm() == null || parent::getSearchTerm()['value'] === '') {
@@ -142,11 +134,6 @@ class StorageTable extends AbstractTable
         return parent::getSearchTerm()['value'];
     }
 
-    /**
-     * @param string $key
-     *
-     * @return string
-     */
     protected function createKeyUrl(string $key): string
     {
         return Url::generate('/storage/maintenance/key', ['key' => $key]);

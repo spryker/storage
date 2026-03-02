@@ -30,18 +30,12 @@ class StorageFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testGetTotalCount(): void
     {
         $this->getStorageHelper()->getStorageClient()->set('random-key', 'value');
         $this->assertGreaterThan(0, $this->getStorageFacade()->getTotalCount());
     }
 
-    /**
-     * @return void
-     */
     public function testGetTimestamps(): void
     {
         $this->assertIsArray($this->getStorageFacade()->getTimestamps());

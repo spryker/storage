@@ -11,10 +11,5 @@ use Symfony\Component\HttpFoundation\Request;
 
 interface CacheKeyGeneratorInterface
 {
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request|null $request
-     *
-     * @return string
-     */
     public function generateCacheKey(?Request $request = null): string;
 }

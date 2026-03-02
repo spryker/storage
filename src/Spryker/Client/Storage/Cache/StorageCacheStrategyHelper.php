@@ -23,10 +23,6 @@ class StorageCacheStrategyHelper implements StorageCacheStrategyHelperInterface
      */
     protected $storageConfig;
 
-    /**
-     * @param \Spryker\Client\Storage\StorageClientInterface $storageClient
-     * @param \Spryker\Client\Storage\StorageConfig $storageConfig
-     */
     public function __construct(
         StorageClientInterface $storageClient,
         StorageConfig $storageConfig

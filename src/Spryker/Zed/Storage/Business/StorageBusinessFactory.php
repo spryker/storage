@@ -54,9 +54,6 @@ class StorageBusinessFactory extends AbstractBusinessFactory
         return new StorageImporter($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\Storage\Business\Model\HealthCheck\HealthCheckInterface
-     */
     public function createKeyValueStoreHealthChecker(): HealthCheckInterface
     {
         return new KeyValueStoreHealthCheck(

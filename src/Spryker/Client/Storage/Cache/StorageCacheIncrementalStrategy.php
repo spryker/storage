@@ -22,10 +22,6 @@ class StorageCacheIncrementalStrategy implements StorageCacheStrategyInterface
      */
     protected $storageClientConfig;
 
-    /**
-     * @param \Spryker\Client\Storage\Cache\StorageCacheStrategyHelperInterface $storageCacheStrategyHelper
-     * @param \Spryker\Client\Storage\StorageConfig $storageClientConfig
-     */
     public function __construct(
         StorageCacheStrategyHelperInterface $storageCacheStrategyHelper,
         StorageConfig $storageClientConfig

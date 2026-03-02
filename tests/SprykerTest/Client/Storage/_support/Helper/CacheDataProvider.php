@@ -77,19 +77,11 @@ class CacheDataProvider
      */
     protected $storageClientConfigMock;
 
-    /**
-     * @param \Spryker\Client\Storage\StorageConfig $storageClientConfigMock
-     */
     public function __construct(StorageConfig $storageClientConfigMock)
     {
         $this->storageClientConfigMock = $storageClientConfigMock;
     }
 
-    /**
-     * @param string $testType
-     *
-     * @return array
-     */
     public function getTestCacheDataInput(string $testType): array
     {
         $cacheData = [];
@@ -164,11 +156,6 @@ class CacheDataProvider
         return $cacheData;
     }
 
-    /**
-     * @param string $testType
-     *
-     * @return array
-     */
     public function getExpectedOutputForReplaceStrategy(string $testType): array
     {
         $expectedOutput = [];
@@ -218,11 +205,6 @@ class CacheDataProvider
         return $expectedOutput;
     }
 
-    /**
-     * @param string $testType
-     *
-     * @return array
-     */
     public function getExpectedOutputForIncrementalStrategy(string $testType): array
     {
         $expectedOutput = [];
@@ -297,11 +279,6 @@ class CacheDataProvider
         return $expectedOutput;
     }
 
-    /**
-     * @param string $testType
-     *
-     * @return array
-     */
     private function generateOverLimitCacheInput(string $testType): array
     {
         $cache = [];
@@ -349,11 +326,6 @@ class CacheDataProvider
         return $cache;
     }
 
-    /**
-     * @param string $testType
-     *
-     * @return array
-     */
     private function generateOverLimitCacheOutput(string $testType): array
     {
         $cache = [];

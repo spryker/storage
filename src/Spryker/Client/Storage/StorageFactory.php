@@ -106,25 +106,16 @@ class StorageFactory extends AbstractFactory
         return $this->getProvidedDependency(StorageDependencyProvider::STORAGE_CLIENT);
     }
 
-    /**
-     * @return \Spryker\Client\Storage\Dependency\Client\StorageToStoreClientInterface
-     */
     public function getStoreClient(): StorageToStoreClientInterface
     {
         return $this->getProvidedDependency(StorageDependencyProvider::CLIENT_STORE);
     }
 
-    /**
-     * @return \Spryker\Client\Storage\Dependency\Client\StorageToLocaleClientInterface
-     */
     public function getLocaleClient(): StorageToLocaleClientInterface
     {
         return $this->getProvidedDependency(StorageDependencyProvider::CLIENT_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Client\StorageExtension\Dependency\Plugin\StoragePluginInterface|null
-     */
     protected function getStoragePlugin(): ?StoragePluginInterface
     {
         return $this->getProvidedDependency(StorageDependencyProvider::PLUGIN_STORAGE);
@@ -153,9 +144,6 @@ class StorageFactory extends AbstractFactory
             ->createStorageCacheStrategy($storageCacheStrategy);
     }
 
-    /**
-     * @return \Spryker\Client\Storage\Cache\CacheKey\CacheKeyGeneratorInterface
-     */
     public function createCacheKeyGenerator(): CacheKeyGeneratorInterface
     {
         return new CacheKeyGenerator(

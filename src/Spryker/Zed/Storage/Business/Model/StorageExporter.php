@@ -20,9 +20,6 @@ class StorageExporter implements StorageExporterInterface
      */
     protected $config;
 
-    /**
-     * @param \Spryker\Zed\Storage\StorageConfig $config
-     */
     public function __construct(StorageConfig $config)
     {
         $this->config = $config;

@@ -11,9 +11,6 @@ use Codeception\Module;
 
 trait StorageHelperTrait
 {
-    /**
-     * @return \SprykerTest\Client\Storage\Helper\StorageHelper
-     */
     protected function getStorageHelper(): StorageHelper
     {
         /** @var \SprykerTest\Client\Storage\Helper\StorageHelper $storageHelper */
@@ -22,10 +19,5 @@ trait StorageHelperTrait
         return $storageHelper;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return \Codeception\Module
-     */
     abstract protected function getModule(string $name): Module;
 }

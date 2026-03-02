@@ -112,9 +112,6 @@ class ServiceTest extends Unit
      */
     protected $clientMock;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -122,9 +119,6 @@ class ServiceTest extends Unit
         $this->setupConfig();
     }
 
-    /**
-     * @return void
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -133,9 +127,6 @@ class ServiceTest extends Unit
         unset($_SERVER['REQUEST_URI']);
     }
 
-    /**
-     * @return void
-     */
     protected function _before(): void
     {
         // Create a full mock of the prototype so dynamic Redis commands (declared on the prototype) can be configured
@@ -146,9 +137,6 @@ class ServiceTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Client\Storage\StorageClientInterface
-     */
     protected function getStorageClient(): StorageClientInterface
     {
         /** @var \Spryker\Client\Storage\StorageClientInterface $storageClient */
@@ -157,9 +145,6 @@ class ServiceTest extends Unit
         return $storageClient;
     }
 
-    /**
-     * @return void
-     */
     public function testGetAllKeysTriggersRightCommand(): void
     {
         $this->clientMock->expects($this->once())->method('keys')->with($this->equalTo('kv:*'));
@@ -167,9 +152,6 @@ class ServiceTest extends Unit
         $this->redisService->getAllKeys();
     }
 
-    /**
-     * @return void
-     */
     public function testGetKeysPassesPatternCorrectly(): void
     {
         $this->clientMock->expects($this->once())->method('keys')->with($this->equalTo('kv:aPattern*'));
@@ -177,9 +159,6 @@ class ServiceTest extends Unit
         $this->redisService->getKeys('aPattern*');
     }
 
-    /**
-     * @return void
-     */
     public function testGetMultiWithEmptyKeys(): void
     {
         $requestedKeys = [];
@@ -187,9 +166,6 @@ class ServiceTest extends Unit
         $this->assertSame($requestedKeys, $this->redisService->getMulti($requestedKeys));
     }
 
-    /**
-     * @return void
-     */
     public function testGet(): void
     {
         if (!$this->tester->getModuleConfig()->isStorageCachingEnabled()) {
@@ -205,9 +181,6 @@ class ServiceTest extends Unit
         $this->assertEquals($value, $storageClient->get($key));
     }
 
-    /**
-     * @return void
-     */
     public function testGetMultiCached(): void
     {
         if (!$this->tester->getModuleConfig()->isStorageCachingEnabled()) {
@@ -241,9 +214,6 @@ class ServiceTest extends Unit
         $this->assertEquals($this->expected['multi'], $storageClient->getMulti(array_keys($this->fixtures['multi'])));
     }
 
-    /**
-     * @return void
-     */
     public function testGetMultiReplaceStrategy(): void
     {
         if (!$this->tester->getModuleConfig()->isStorageCachingEnabled()) {
@@ -257,9 +227,6 @@ class ServiceTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetMultiIncrementalStrategy(): void
     {
         if (!$this->tester->getModuleConfig()->isStorageCachingEnabled()) {
@@ -273,9 +240,6 @@ class ServiceTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetSingleReplaceStrategy(): void
     {
         if (!$this->tester->getModuleConfig()->isStorageCachingEnabled()) {
@@ -289,9 +253,6 @@ class ServiceTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetSingleIncrementalStrategy(): void
     {
         if (!$this->tester->getModuleConfig()->isStorageCachingEnabled()) {
@@ -305,13 +266,6 @@ class ServiceTest extends Unit
         );
     }
 
-    /**
-     * @param string $strategyName
-     * @param array $fixtures
-     * @param array $expected
-     *
-     * @return void
-     */
     protected function testMultiKeyStrategy(string $strategyName, array $fixtures, array $expected): void
     {
         $request = $this->createRequest();
@@ -325,13 +279,6 @@ class ServiceTest extends Unit
         $this->assertEquals($expected, $storageClient->getMulti(array_keys($fixtures)));
     }
 
-    /**
-     * @param string $strategyName
-     * @param string $key
-     * @param string $value
-     *
-     * @return void
-     */
     protected function testSingleKeyStrategy(string $strategyName, string $key, string $value): void
     {
         $request = $this->createRequest();
@@ -345,18 +292,12 @@ class ServiceTest extends Unit
         $this->assertEquals($value, $storageClient->get($key));
     }
 
-    /**
-     * @return void
-     */
     protected function setupServerVariable(): void
     {
         $_SERVER['SERVER_NAME'] = $_SERVER['SERVER_NAME'] ?? 'localhost';
         $_SERVER['REQUEST_URI'] = $_SERVER['REQUEST_URI'] ?? '/test/url';
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Request
-     */
     protected function createRequest(): Request
     {
         $request = new Request([], [], [], [], [], $_SERVER);
@@ -364,9 +305,6 @@ class ServiceTest extends Unit
         return $request;
     }
 
-    /**
-     * @return void
-     */
     public function testGetMultiShouldReturnDataInTheSameOrderAsInput(): void
     {
         // Arrange
@@ -433,9 +371,6 @@ class ServiceTest extends Unit
         return $storageClient;
     }
 
-    /**
-     * @return void
-     */
     protected function setupConfig(): void
     {
         $this->tester->setConfig(StorageConstants::STORAGE_REDIS_PROTOCOL, Config::get(static::REDIS_SCHEME, false) ?: Config::get(static::REDIS_PROTOCOL, 'tcp'));

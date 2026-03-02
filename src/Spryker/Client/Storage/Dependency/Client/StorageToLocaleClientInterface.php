@@ -9,8 +9,5 @@ namespace Spryker\Client\Storage\Dependency\Client;
 
 interface StorageToLocaleClientInterface
 {
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string;
 }

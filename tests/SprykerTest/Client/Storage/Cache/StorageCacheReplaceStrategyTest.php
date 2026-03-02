@@ -22,11 +22,6 @@ use SprykerTest\Client\Storage\Helper\CacheDataProvider;
  */
 class StorageCacheReplaceStrategyTest extends AbstractStorageCacheStrategyTest
 {
-    /**
-     * @param string $testType
-     *
-     * @return void
-     */
     protected function testStrategy(string $testType): void
     {
         $this->setCachedKeysByType($testType);
@@ -43,49 +38,31 @@ class StorageCacheReplaceStrategyTest extends AbstractStorageCacheStrategyTest
         );
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceStrategyWithNewKeys(): void
     {
         $this->testStrategy(CacheDataProvider::TEST_TYPE_NEW_KEYS);
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceStrategyWithUsedKeys(): void
     {
         $this->testStrategy(CacheDataProvider::TEST_TYPE_USED_KEYS);
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceStrategyWithUnusedKeys(): void
     {
         $this->testStrategy(CacheDataProvider::TEST_TYPE_UNUSED_KEYS);
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceStrategyWithNewAndUsedKeys(): void
     {
         $this->testStrategy(CacheDataProvider::TEST_TYPE_NEW_AND_USED_KEYS);
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceStrategyWithNewAndUsedAndUnusedKeys(): void
     {
         $this->testStrategy(CacheDataProvider::TEST_TYPE_NEW_AND_USED_AND_UNUSED_KEYS);
     }
 
-    /**
-     * @return void
-     */
     public function testReplaceStrategyWithNoKeys(): void
     {
         $this->testStrategy(CacheDataProvider::TEST_TYPE_NO_KEYS);

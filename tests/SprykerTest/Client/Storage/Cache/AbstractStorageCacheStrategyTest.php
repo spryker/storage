@@ -52,9 +52,6 @@ abstract class AbstractStorageCacheStrategyTest extends Unit
      */
     protected $storageCacheStrategyHelper;
 
-    /**
-     * @return void
-     */
     protected function _before(): void
     {
         $this->storageClientMock = $this
@@ -91,18 +88,8 @@ abstract class AbstractStorageCacheStrategyTest extends Unit
             ->willReturn(100);
     }
 
-    /**
-     * @param string $testType
-     *
-     * @return void
-     */
     abstract protected function testStrategy(string $testType): void;
 
-    /**
-     * @param string $testType
-     *
-     * @return void
-     */
     protected function setCachedKeysByType(string $testType): void
     {
         $this->storageClientMock->setCachedKeys($this->cacheDataProvider->getTestCacheDataInput($testType));

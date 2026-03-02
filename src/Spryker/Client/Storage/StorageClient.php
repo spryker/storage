@@ -542,11 +542,6 @@ class StorageClient extends AbstractClient implements StorageClientInterface
         return (new static())->getFactory()->createCacheKeyGenerator()->generateCacheKey($request);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request|null $request
-     *
-     * @return string
-     */
     protected function buildCacheKey(?Request $request = null): string
     {
         return $this->getFactory()->createCacheKeyGenerator()->generateCacheKey($request);
