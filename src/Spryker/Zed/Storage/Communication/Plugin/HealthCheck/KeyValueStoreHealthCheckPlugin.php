@@ -19,6 +19,8 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 class KeyValueStoreHealthCheckPlugin extends AbstractPlugin implements HealthCheckPluginInterface
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const STORAGE_HEALTH_CHECK_SERVICE_NAME = 'storage';

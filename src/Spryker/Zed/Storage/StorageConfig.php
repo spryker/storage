@@ -18,6 +18,8 @@ class StorageConfig extends AbstractBundleConfig
     protected const DEFAULT_PAGE_LENGTH = 100;
 
     /**
+     * @api
+     *
      * @deprecated Use {@link \Spryker\Zed\StorageRedis\StorageRedisConfig::DEFAULT_REDIS_DATABASE} instead.
      *
      * @var int
