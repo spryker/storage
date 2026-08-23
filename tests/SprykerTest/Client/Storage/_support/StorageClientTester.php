@@ -40,7 +40,6 @@ class StorageClientTester extends Actor
     {
         $storageClientReflection = new ReflectionClass($object);
         $bufferedValuesReflection = $storageClientReflection->getProperty($propertyName);
-        $bufferedValuesReflection->setAccessible(true);
         $bufferedValuesReflection->setValue($value);
     }
 }
